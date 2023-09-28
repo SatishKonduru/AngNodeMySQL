@@ -1,0 +1,36 @@
+<header class="header">
+    <a href="#" class="logo"><i class="fa fa-shopping-basket"></i>RSK Mart</a>
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#products">Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#reviews">Reviews</a>
+    </nav>
+    <div class="icons">
+        <div class="fa fa-bars" id="menu-btn"></div>
+        <div class="fa fa-search" id="search-btn"></div>
+        <div class="fa fa-shopping-cart" id="cart-btn"></div>
+        <div class="fa fa-user" id="login-btn" [matMenuTriggerFor]="menu"></div>
+    </div>
+    <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="search here....">
+        <label for="search-box" class="fa fa-search"></label>
+    </form>
+    
+</header>
+<mat-menu #menu="matMenu" >
+    <button mat-menu-item class="menu-item" (click)="userSignup()">
+        <mat-icon>account_circle</mat-icon>
+        <span class="size">Register</span>
+      </button>
+    <button mat-menu-item class="menu-item" (click)="userLogin()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span class="size">Login</span>
+    </button>
+    <button mat-menu-item class="menu-item">
+        <mat-icon>power_settings_new</mat-icon>
+        <span class="size">Exit</span>
+      </button>
+</mat-menu>
+

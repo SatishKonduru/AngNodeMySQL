@@ -1,0 +1,34 @@
+.userDialog{
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    transform: translate(320px, -50px);
+    background: #fff; 
+    height: 32rem;
+    text-align: center;
+}
+.mat-my-primary{
+    background-image: linear-gradient(var(--orange), #fff);
+}
+.mat-dialog-close{
+    background-image: linear-gradient(var(--light-color), #fff);
+}
+mat-label{
+    font-size: 16px;
+    color: var(--orange);
+}
+mat-form-field{
+    width: 100%;
+    padding:5px;
+}
+.forgot{
+    text-align: left;
+    font-size: 14px;
+    padding-left: 1rem;
+    /* color: var(--orange); */
+    color: var(--black);
+}
+@media screen and (min-device-width: 10px) and (max-device-width: 914px){
+    .userDialog{
+       transform: translate(10px, 10px);
+    }
+}

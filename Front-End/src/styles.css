@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --orange: #c25b02;
+    --black: #101010;
+    --light-color: #666;
+    --box-shadow: 0 0.2rem 0.5rem var(--orange);
+    --border:.2rem solid  rgba(0,0,0,.1);
+    --outline:.1rem solid  rgba(0,0,0,.1);
+    --outline-hover :.2rem solid  var(--black);
+}
+*{ 
+   font-family: 'poppins', 'sans-serif';
+   margin: 0; 
+   padding: 0;
+   box-sizing: border-box;
+   outline: none;
+   border: none;
+   text-decoration: none !important;
+   /* text-transform: capitalize; */
+   transition: all .2s linear;
+ }
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+body{
+    background: #eee;
+}
+/* 
+.error-snackbar{
+    background-color: red !important;
+    color: #fff !important;
+}
+
+ .success-snackbar{
+    background-color: green !important;
+    color: #fff !important;
+} */
+.mat-mdc-snack-bar-container {
+    &.error-snackbar {
+        --mdc-snackbar-container-color: rgb(165, 19, 19) !important;
+        --mdc-snackbar-supporting-text-color: #fff !important;
+      }
+ }
+.mat-mdc-snack-bar-container {
+    &.success-snackbar {
+      --mdc-snackbar-container-color: rgb(0, 107, 0) !important;
+      --mdc-snackbar-supporting-text-color: #fff !important;
+    }
+   
+ }
+
