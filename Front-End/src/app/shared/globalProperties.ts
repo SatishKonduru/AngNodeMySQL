@@ -2,6 +2,7 @@ export class globalProperties{
     //message
     public static genericError: string = 'Something went wrong! Please try agian later'
 
+    public static unauthorized: string = "You are not Authorized person to access this page."
     //Regex(Regular Expression)
     public static nameRegex: string = "[a-zA-Z0-9]*"
     public static emailRegex: string = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9._%-]+\\.[a-z]{2,3}"

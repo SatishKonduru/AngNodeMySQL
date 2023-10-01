@@ -64,10 +64,10 @@ onRegister(){
   })
 }
 onClose(){
- // this.dialogRef.close();
-  this.ngZone.run(() => {
-    this.dialogRef.close();
-  });
+ this.dialogRef.close();
+  // this.ngZone.run(() => {
+  //   this.dialogRef.close();
+  // });
 }
 
 
