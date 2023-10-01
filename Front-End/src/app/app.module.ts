@@ -18,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from './services/snackbar.service';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { MatDialogRef } from '@angular/material/dialog';
+
+
 
 
 
@@ -33,7 +34,7 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
   fgsSize: 100,
   pbDirection: PB_DIRECTION.leftToRight, //pbDirection = ProgressBar Direction
   pbThickness: 5
-}
+} 
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,14 +56,11 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+    
   ],
   providers: [
     UserService, 
-    SnackbarService,
-    {
-      provide: MatDialogRef,
-      useValue: {}
-    },
+    SnackbarService
   ],
   bootstrap: [AppComponent]
 })

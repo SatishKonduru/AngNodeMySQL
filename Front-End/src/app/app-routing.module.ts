@@ -19,6 +19,26 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent
   },
+  {
+    path: 'rsk',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '/rsk/dashboard',
+        pathMatch: 'full'
+      },
+      // {
+      //   path: '',
+      //   loadChildren:
+      //     () => import('./modules/angular-material/angular-material.module').then(m => m.AngularMaterialModule)
+      // },
+      { path: 'dashboard', 
+      loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) 
+      }
+      
+    ]
+  },
  
   {
     path: '**',
