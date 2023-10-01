@@ -1,6 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
 
@@ -11,10 +11,11 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent {
 
-constructor(private _userDialog: Dialog){}
+constructor(private _userDialog: MatDialog){}
   userSignup(){
     const dialogConfig  = new MatDialogConfig()
     dialogConfig.width = "70rem"
+    dialogConfig.position ={right: '10px', top: '5px'}
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this._userDialog.open(SignupComponent, dialogConfig)
@@ -24,8 +25,9 @@ constructor(private _userDialog: Dialog){}
   userLogin(){
     const dialogConfig = new MatDialogConfig()
     dialogConfig.width = "70rem"
+    dialogConfig.position ={right: '10px', top: '5px'}
     dialogConfig.disableClose = true
-    dialogConfig.autoFocus = true
+    // dialogConfig.autoFocus = true
     this._userDialog.open(LoginComponent,dialogConfig)
   }
 }

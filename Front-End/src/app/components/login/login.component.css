@@ -1,11 +1,4 @@
-.userDialog{
-    box-shadow: var(--box-shadow);
-    border-radius: 5px;
-    transform: translate(320px, -50px);
-    background: #fff; 
-    height: 32rem;
-    text-align: center;
-}
+
 .mat-my-primary{
     background-image: linear-gradient(var(--orange), #fff);
 }

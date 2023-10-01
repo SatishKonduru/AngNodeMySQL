@@ -15,7 +15,7 @@ connection.connect((err) => {
         console.log("Connected.")
     }
     else{
-        console.log(err)
+        console.log("Error while Connecting.....:",err)
     }
 })
 

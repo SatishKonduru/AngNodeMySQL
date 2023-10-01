@@ -1,4 +1,4 @@
-<div class="userDialog">
+
     <mat-toolbar color="my-primary">
       <mat-toolbar-row >
         <span >Login</span>
@@ -31,9 +31,9 @@
             <a mat-flat-button color="link" (click)="forgotPassword()">Forgot password?</a>
         </div>
     </mat-dialog-content>
-    <mat-dialog-actions >
-      <button mat-raised-button color="my-primary" (click)="onLogin()" [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
-      <button mat-raised-button color="dialog-close"  style="margin-left: 10px;" mat-dialog-close (click)="onClose()">Close</button>
+    <mat-dialog-actions style="justify-content: center;">
+      <button mat-raised-button color="my-primary" (click)="userLogin()" [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
+      <button mat-raised-button color="dialog-close"  style="margin-left: 10px;" mat-dialog-close >Close</button>
     </mat-dialog-actions> 
-</div>
+
 

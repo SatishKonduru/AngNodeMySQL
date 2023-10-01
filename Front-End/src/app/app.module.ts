@@ -17,6 +17,8 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from './services/snackbar.service';
 import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -41,7 +43,8 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     HomeComponent,
     SignupComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,14 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, SnackbarService],
+  providers: [
+    UserService, 
+    SnackbarService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

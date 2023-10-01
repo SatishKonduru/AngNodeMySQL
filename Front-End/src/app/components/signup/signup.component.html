@@ -1,4 +1,4 @@
-<div class="userDialog"> 
+
     <mat-toolbar color="my-primary">
       <mat-toolbar-row >
         <span >Register</span>
@@ -45,8 +45,8 @@
           </div><!-- form-group ends  -->
          </form>
     </mat-dialog-content>
-    <mat-dialog-actions >
+    <mat-dialog-actions style="justify-content: center;">
       <button mat-raised-button color="my-primary" (click)="onRegister()" [disabled]="!(registerForm.valid && registerForm.dirty)">Register</button>
-      <button mat-raised-button color="dialog-close"  style="margin-left: 10px;" mat-dialog-close (click)="onClose()">Close</button>
+      <button mat-raised-button color="dialog-close"  style="margin-left: 10px;" mat-dialog-close >Close</button>
     </mat-dialog-actions> 
-</div>
+
