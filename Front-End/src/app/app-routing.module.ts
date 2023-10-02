@@ -29,18 +29,18 @@ const routes: Routes = [
         redirectTo: '/rsk/dashboard',
         pathMatch: 'full'
       },
-      {
-        path: '',
-        loadChildren:
-          () => import('./modules/angular-material/angular-material.module').then(m => m.AngularMaterialModule),
-          canActivate: [RouteGaurdService],
-          data: {
-            expectedRole: [
-              'admin',
-              'user'
-            ]
-          } 
-      },
+      // {
+      //   path: '',
+      //   loadChildren:
+      //     () => import('./modules/angular-material/angular-material.module').then(m => m.AngularMaterialModule),
+      //     canActivate: [RouteGaurdService],
+      //     data: {
+      //       expectedRole: [
+      //         'admin',
+      //         'user'
+      //       ]
+      //     } 
+      // },
       { path: 'dashboard', 
       loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
       canActivate: [RouteGaurdService],
