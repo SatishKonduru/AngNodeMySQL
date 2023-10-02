@@ -58,6 +58,7 @@ userLogin(){
   .subscribe((res:any)=>{
     this._ngxService.stop()
     this.dialogRef.close()
+    console.log("Token from Server: ", res.token)
     localStorage.setItem('token', res.token)
     this._router.navigate(['/rsk/dashboard'])
   }, (err) => {

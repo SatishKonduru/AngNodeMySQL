@@ -14,10 +14,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SnackbarService } from './services/snackbar.service';
 import { LoginComponent } from './components/login/login.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { DashboardService } from './services/dashboard.service';
+import { AuthService } from './services/auth.service';
+import { RouteGaurdService } from './services/route-gaurd.service';
+import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 
 
 
@@ -60,7 +64,15 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
   ],
   providers: [
     UserService, 
-    SnackbarService
+    SnackbarService,
+    DashboardService,
+    AuthService,
+    RouteGaurdService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

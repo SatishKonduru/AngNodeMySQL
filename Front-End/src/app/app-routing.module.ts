@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RouteGaurdService } from './services/route-gaurd.service';
 
 const routes: Routes = [
   {
@@ -28,13 +29,27 @@ const routes: Routes = [
         redirectTo: '/rsk/dashboard',
         pathMatch: 'full'
       },
-      // {
-      //   path: '',
-      //   loadChildren:
-      //     () => import('./modules/angular-material/angular-material.module').then(m => m.AngularMaterialModule)
-      // },
+      {
+        path: '',
+        loadChildren:
+          () => import('./modules/angular-material/angular-material.module').then(m => m.AngularMaterialModule),
+          canActivate: [RouteGaurdService],
+          data: {
+            expectedRole: [
+              'admin',
+              'user'
+            ]
+          } 
+      },
       { path: 'dashboard', 
-      loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) 
+      loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+      canActivate: [RouteGaurdService],
+      data: {
+        expectedRole: [
+          'admin',
+          'user'
+        ]
+      } 
       }
       
     ]
