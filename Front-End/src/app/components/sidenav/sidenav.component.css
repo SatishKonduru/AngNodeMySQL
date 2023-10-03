@@ -9,15 +9,15 @@
   .rsk-sidenav-content {
     display: flex;
     height: inherit;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
  .rsk-sidenav {
     padding: 20px;
     background: var(--orange);
 }
 .pageContent{
-    margin-top: 5rem;
+    margin-top: 1rem;
     font-size: 16px;
 }
 
