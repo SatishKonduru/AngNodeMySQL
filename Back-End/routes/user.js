@@ -4,6 +4,8 @@ const connection = require('../connection')
 const router = express.Router();
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
+var auth = require('../services/authentication')
+var checkRole = require('../services/checkRole')
 
 var transporter = nodeMailer.createTransport({
     service: 'gmail',
