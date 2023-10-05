@@ -9,12 +9,14 @@ var uuid = require('uuid')
 var auth = require('../services/authentication')
 
 
-router.post('/generateReport', auth.authenticateToken,(req, res, next) =>{
+router.post('/generateReport', auth.authenticateToken,(req, res) =>{
     const generatedUuid = uuid.v1();//its time based. every time it gives unique uuid
+    console.log("UUID: ", generatedUuid)
     const orderDetails = req.body
+    console.log("ORder Details: ", orderDetails)
     var productDetailsReport = JSON.parse(orderDetails.productDetails)
     //now store these details in DB
-    var query = "insert into bill (name, uuid, email, contactNumber, paymentMethod, total, productDetails, createdBy) values (?,?,?,?,?,?,?,?)"
+    var query = "insert into bill (name,uuid,email, contactNumber, paymentMethod, total, productDetails, createdBy) values (?,?,?,?,?,?,?,?)"
     connection.query(query, [orderDetails.name, generatedUuid, orderDetails.email, orderDetails.contactNumber, orderDetails.paymentMethod, orderDetails.totalAmount, orderDetails.productDetails, res.locals.email],(err, results) => {
         if(!err){
             ejs.renderFile(path.join(__dirname, '', "report.ejs"),{
@@ -29,7 +31,7 @@ router.post('/generateReport', auth.authenticateToken,(req, res, next) =>{
                     return res.status(500).json(err)
                 }
                 else{
-                    pdf.create(data).toFile('../generated_pdf/'+generatedUuid+'.pdf', function(err, data){
+                    pdf.create(results).toFile('./generated_pdf/'+generatedUuid+'.pdf', function(err, results){
                         if(err){
                             console.log(err)
                             return res.status(500).json(err)
@@ -46,3 +48,6 @@ router.post('/generateReport', auth.authenticateToken,(req, res, next) =>{
         }
     })
 } )
+
+
+module.exports = router
