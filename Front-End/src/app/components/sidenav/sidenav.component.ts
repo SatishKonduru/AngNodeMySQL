@@ -9,10 +9,15 @@ import { MenuItems } from 'src/app/shared/menu-items';
 })
 export class SidenavComponent {
  
-  token: any = localStorage.getItem('token')
+  // token: any = localStorage.getItem('token')
+  token : any
   tokenPayload: any;
   constructor(public menuItems: MenuItems){
-    this.tokenPayload = jwt_decode(this.token)
+    // this.tokenPayload = jwt_decode(this.token)
+    if(localStorage.getItem('token') != null){
+      this.token = localStorage.getItem('token')
+      this.tokenPayload = jwt_decode(this.token)
+    }
   }
 
 }

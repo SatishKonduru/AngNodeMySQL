@@ -19,6 +19,7 @@ constructor(
   private _userService: UserService
   ){}
 ngOnInit(): void {
+  
   if(localStorage.getItem('token') != null){
     this._userService.checkToken()
     .subscribe(res => {
@@ -26,6 +27,9 @@ ngOnInit(): void {
     }, (err) => {
       console.log(err)
     })
+  }
+  else{
+    this._router.navigate(['/home'])
   }
 }
   userSignup(){
