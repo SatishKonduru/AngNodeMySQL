@@ -1,7 +1,17 @@
 <ng-container>
   <mat-drawer-container class="rsk-container" autosize>
-    <mat-drawer #drawer class="rsk-sidenav" mode="side">
-      <h3 style="color: #fff;">Side menu Items here....</h3>
+    <mat-drawer #drawer class="rsk-sidenav" mode="side" opened>
+      <!-- <h3 style="color: #fff;">Side menu Items here....</h3> -->
+      <mat-nav-list >
+          <mat-list-item  *ngFor="let item of menuItems.getMenuItems()" routerLinkActive="selected" group="{{item.state}}" class="listItem">
+            <a [routerLink]="['/rsk', item.state]"
+                *ngIf="(item.role === '' || item.role===tokenPayload.role)" style="color: #fff;">
+              <mat-icon>{{item.icon}}</mat-icon>  
+              {{" "+item.name}}
+              <span fxFlex></span>
+            </a>
+          </mat-list-item>
+      </mat-nav-list>
   </mat-drawer>
   
     <mat-drawer-content>

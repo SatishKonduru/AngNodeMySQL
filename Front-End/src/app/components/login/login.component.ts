@@ -46,6 +46,10 @@ forgotPassword(){
  
 }
 
+changePassword(){
+  
+}
+
 
 userLogin(){
   this._ngxService.start()

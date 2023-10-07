@@ -22,6 +22,8 @@ import { DashboardService } from './services/dashboard.service';
 import { AuthService } from './services/auth.service';
 import { RouteGaurdService } from './services/route-gaurd.service';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { MenuItems } from './shared/menu-items';
+
 
 
 
@@ -63,6 +65,7 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     
   ],
   providers: [
+    MenuItems,
     UserService, 
     SnackbarService,
     DashboardService,

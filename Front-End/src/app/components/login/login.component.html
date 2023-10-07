@@ -29,7 +29,9 @@
          </form>
         <div class="forgot">
             <a mat-flat-button color="link" (click)="forgotPassword()">Forgot password?</a>
+            <a mat-flat-button color="link" (click)="changePassword()">Change password?</a>
         </div>
+        
     </mat-dialog-content>
     <mat-dialog-actions style="justify-content: center;">
       <button mat-raised-button color="my-primary" (click)="userLogin()" [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
