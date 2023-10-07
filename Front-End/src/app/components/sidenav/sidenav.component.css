@@ -13,6 +13,7 @@
     justify-content: flex-start;
   }
  .rsk-sidenav {
+    width: 25rem;
     padding: 20px;
     background: var(--orange);
 }
@@ -27,8 +28,15 @@
   background-image: linear-gradient(to right, var(--orange),#000);
   border-radius: 0 20px 0 20px;
 }
-
+.listItem{
+  width: 95%;
+  padding-right: 0;
+  margin-bottom: 10px;
+}
 .listItem:hover{
- transform: scale(0.9, 1); 
+ background-image: linear-gradient(to right, var(--orange),#000);
+ border-radius: 0 1rem 1rem 0 !important;
+ transform: scale(1.1, 1); 
+
 }
 

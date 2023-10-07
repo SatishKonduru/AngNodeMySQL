@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 import { globalProperties } from 'src/app/shared/globalProperties';
 import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,12 @@ forgotPassword(){
 }
 
 changePassword(){
-  
+  this.dialogRef.close()
+  const dialogConfig = new MatDialogConfig()
+  dialogConfig.width = '70rem'
+  dialogConfig.position ={right: '10px', top: '5px'}
+  dialogConfig.disableClose = true
+  this._userDialog.open(ChangePasswordComponent,dialogConfig)
 }
 
 
