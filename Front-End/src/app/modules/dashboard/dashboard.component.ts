@@ -22,7 +22,8 @@ getDashboardData(){
   .subscribe((res: any) => {
     this._ngxService.stop()
     this.data = res
-  }, (err) => {
+    console.log("Data: ", this.data)
+  }, (err) => { 
     this._ngxService.stop()
     console.log("Error while getting Dashboard Data: ", err)
     if(err.error?.message){
