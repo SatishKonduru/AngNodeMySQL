@@ -32,7 +32,8 @@
         <mat-icon>password</mat-icon>
         <span class="size">Change Password</span>
     </button>
-    <button mat-menu-item class="menu-item">
+    <button mat-menu-item class="menu-item" (click)="logout()" 
+    *ngIf="check()">
         <mat-icon>power_settings_new</mat-icon>
         <span class="size">Exit</span>
       </button>
