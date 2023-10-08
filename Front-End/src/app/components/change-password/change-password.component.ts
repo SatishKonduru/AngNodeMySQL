@@ -24,13 +24,14 @@ constructor(
 
 ngOnInit(): void {
   this.changePasswordForm = this._formBilder.group({
+    email: [null,[Validators.required, Validators.pattern(globalProperties.emailRegex)]],
     oldPassword: [null, Validators.required],
     newPassword: [null, Validators.required],
     confirmPassword: [null, Validators.required]
   }) 
 }
 validatePassword(){
-  if(this.changePasswordForm.controls['newPassword'] != this.changePasswordForm.controls['confirmPassword']){
+  if(this.changePasswordForm.controls['newPassword'].value != this.changePasswordForm.controls['confirmPassword'].value){
     return true
   }
   else{
@@ -42,6 +43,7 @@ changePassword(){
   this._ngxService.start()
   var formData = this.changePasswordForm.value
   var data = {
+    email: formData.email,
     oldPassword: formData.oldPassword,
     newPassword: formData.newPassword,
     confirmPassword: formData.confirmPassword

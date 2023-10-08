@@ -56,7 +56,15 @@ changePassword(){
   this._userDialog.open(ChangePasswordComponent,dialogConfig)
 }
 
-
+check(){
+  const token = localStorage.getItem('token')
+  if(token){
+    return true
+  }
+  else{
+    return false
+  }
+}
 userLogin(){
   this._ngxService.start()
   var formData = this.loginForm.value;

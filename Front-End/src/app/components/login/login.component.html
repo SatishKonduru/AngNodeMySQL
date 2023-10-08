@@ -28,8 +28,8 @@
           </div><!-- form-group ends  -->
          </form>
         <div class="forgot">
-            <a mat-flat-button color="link" (click)="forgotPassword()">Forgot password?</a>
-            <a mat-flat-button color="link" (click)="changePassword()">Change password?</a>
+            <a mat-flat-button color="link" (click)="forgotPassword()" *ngIf="!check()">Forgot password?</a>
+            <a mat-flat-button color="link" (click)="changePassword()" *ngIf="check()">Change password?</a>
         </div>
         
     </mat-dialog-content>

@@ -5,6 +5,7 @@ import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-header',
@@ -41,7 +42,23 @@ ngOnInit(): void {
     this._userDialog.open(SignupComponent, dialogConfig)
     
   }
-
+  check(){
+    const token = localStorage.getItem('token')
+    if(token){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  changePassword(){
+    
+    const dialogConfig = new MatDialogConfig()
+    dialogConfig.width = '70rem'
+    dialogConfig.position ={right: '10px', top: '5px'}
+    dialogConfig.disableClose = true
+    this._userDialog.open(ChangePasswordComponent,dialogConfig)
+  }
   userLogin(){
     const dialogConfig = new MatDialogConfig()
     dialogConfig.width = "70rem"
