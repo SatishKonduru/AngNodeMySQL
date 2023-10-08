@@ -25,6 +25,7 @@ import { TokenInterceptorInterceptor } from './services/token-interceptor.interc
 import { MenuItems } from './shared/menu-items';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 
 
 
@@ -55,7 +56,8 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     LoginComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    LogoutComponent
+    LogoutComponent,
+    ManageCategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { CategoryService } from 'src/app/services/category.service';
+import { ManageCategoryComponent } from 'src/app/components/manage-category/manage-category.component';
+import { RouteGaurdService } from 'src/app/services/route-gaurd.service';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }
+  { path: '', 
+  component: DashboardComponent 
+  }
 ];
 
 @NgModule({
