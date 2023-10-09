@@ -12,7 +12,14 @@ const MENUITEMS = [
         name: 'Dashboard',
         icon: 'dashboard',
         role: ''
+    },
+    {
+        state: 'category',
+        name: 'Manage Catagory',
+        icon: 'category',
+        role: 'admin'
     }
+
 ]
 @Injectable()
 export class MenuItems{
