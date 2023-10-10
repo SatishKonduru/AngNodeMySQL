@@ -1,0 +1,10 @@
+h5{
+    font-size: 18px;
+}
+.my-primary{
+   color: var(--orange) !important;
+}
+.mat-dialog-close{
+    background-image: linear-gradient(var(--light-color), #fff) !important;
+    color: #000 !important;
+}

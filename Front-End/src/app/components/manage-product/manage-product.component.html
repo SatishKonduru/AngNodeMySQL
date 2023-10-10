@@ -1,8 +1,8 @@
-<mat-card>
+<mat-card style="box-shadow: var(--box-shadow);">
     <mat-card-content style="height: 90px;">
         <button mat-raised-button color="my-primary"  (click)="addProduct()" style="margin-top: 10px;">Add Product</button>
-        <mat-form-field appearance="outline" class="float-end" style="width: 400px !important;">
-            <mat-label>Search</mat-label>
+        <mat-form-field appearance="outline" class="float-end" style="width: 400px !important;"> 
+            <mat-label>Search...</mat-label>
             <input matInput autocomplete="off" [(ngModel)]="searchKey" (keyup)="applyFilter($event.target.value)">
             <button matSuffix mat-icon-button *ngIf="searchKey" 
             (click)="onSearchClear()"><mat-icon>close</mat-icon></button>
@@ -43,7 +43,7 @@
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let element" class="action-link">
             <button mat-icon-button color="primary" matTooltip="Edit" (click)="editProduct(element)"><mat-icon>edit</mat-icon></button>
-            <button mat-icon-button color="primary" matTooltip="Delete" (click)="deleteProduct(element)"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="warn" matTooltip="Delete" (click)="deleteProduct(element)"><mat-icon>delete</mat-icon></button>
             <mat-slide-toggle (change)="onChange($event.checked, element.id)" matTooltip="Activate/Deactivate Product" [checked]="element.status"></mat-slide-toggle>
         </td>
     </ng-container>

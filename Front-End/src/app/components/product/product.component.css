@@ -1,5 +1,6 @@
 .mat-my-primary {
     background-image: linear-gradient(var(--orange), #fff);
+    color: #000;
   }
   .mat-dialog-close {
     background-image: linear-gradient(var(--light-color), #fff);

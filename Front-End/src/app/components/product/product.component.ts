@@ -1,4 +1,4 @@
-import { Component, EventEmitter , Inject, OnInit} from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OnSameUrlNavigation } from '@angular/router';
@@ -10,120 +10,118 @@ import { globalProperties } from 'src/app/shared/globalProperties';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
 })
-export class ProductComponent implements OnInit{
-onAddProduct = new EventEmitter()
-onEditProduct = new EventEmitter()
+export class ProductComponent implements OnInit {
+  onAddProduct = new EventEmitter();
+  onEditProduct = new EventEmitter();
 
-productForm: any = FormGroup
-dialogAction = 'Add'
-action : any = "Add"
-responseMsg : any
-categories: any = []
-constructor(
-  @Inject(MAT_DIALOG_DATA) public dialogData: any,
-  private _formBuilder: FormBuilder,
-  private _productService: ProductService,
-  private _categoryService: CategoryService,
-  public dialogRef: MatDialogRef<ProductComponent>,
-  private _snackbar: SnackbarService
-){}
+  productForm: any = FormGroup;
+  dialogAction = 'Add';
+  action: any = 'Add';
+  responseMsg: any;
+  categories: any = [];
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public dialogData: any,
+    private _formBuilder: FormBuilder,
+    private _productService: ProductService,
+    private _categoryService: CategoryService,
+    public dialogRef: MatDialogRef<ProductComponent>,
+    private _snackbar: SnackbarService
+  ) {}
 
-ngOnInit(){
-  console.log("Product Component dialogData: ", this.dialogData)
-this.productForm = this._formBuilder.group({
-  name: [null, [Validators.required, Validators.pattern(globalProperties.nameRegex)]],
-  categoryId: [null,[Validators.required]],
-  description: [null,[Validators.required]],
-  price: [null,[Validators.required]]
-})
-if(this.dialogData.action == "Edit"){
-  this.dialogAction = "Edit"
-  this.action = "Update"
-  this.productForm.patchValue(this.dialogData.data)
-}
-
-this.getCategories()
-}
-
-getCategories(){
-  this._categoryService.getCategories()
-  .subscribe((res: any) => {
-    this.categories = res
-  }, (err: any) => {
-    if(err.error?.message){
-      this.responseMsg = err.error?.message
+  ngOnInit() {
+    this.productForm = this._formBuilder.group({
+      name: [null,[Validators.required]],      
+      categoryId: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      price: [null, [Validators.required]],
+    });
+    if (this.dialogData.action == 'Edit') {
+      this.dialogAction = 'Edit';
+      this.action = 'Update';
+      this.productForm.patchValue(this.dialogData.data);
     }
-    else{
-      this.responseMsg = globalProperties.genericError
-    }
-    this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
-  })
-}
-handleSubmit(){
-  if(this.dialogAction == 'Edit'){
-    this.edit()
+
+    this.getCategories();
   }
-  else{
-    this.add()
+
+  getCategories() {
+    this._categoryService.getCategories().subscribe(
+      (res: any) => {
+        this.categories = res;
+      },
+      (err: any) => {
+        if (err.error?.message) {
+          this.responseMsg = err.error?.message;
+        } else {
+          this.responseMsg = globalProperties.genericError;
+        }
+        this._snackbar.openSnackbar(this.responseMsg, globalProperties.error);
+      }
+    );
   }
-}
-
-add(){
-  var formData = this.productForm.value
-  var data = {
-    name: formData.name,
-    categoryId: formData.categoryId,
-    description: formData.description,
-    price: formData.price
+  handleSubmit() {
+    if (this.dialogAction == 'Edit') {
+      this.edit();
+    } else {
+      this.add();
+    }
   }
-  this._productService.add(data)
-  .subscribe((res:any) => {
-    this.dialogRef.close()
-    this.onAddProduct.emit()
-    this.responseMsg = res.message
-    this._snackbar.openSnackbar(this.responseMsg, 'Success')
-  }, (err: any) => {
-    this.dialogRef.close()
-    if(err.error?.message){
-      this.responseMsg = err.error?.message
-    }
-    else{
-      this.responseMsg = globalProperties.genericError
-    }
-    this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
-  })
-}
 
-edit(){
-  var formData = this.productForm.value
-
-  var data = {
-    id: this.dialogData.data.id,
-    name: formData.name,
-    categoryId: formData.categoryId,
-    description: formData.description,
-    price: formData.price
+  add() {
+    var formData = this.productForm.value;
+    var data = {
+      name: formData.name,
+      categoryId: formData.categoryId,
+      description: formData.description,
+      price: formData.price,
+    };
+    this._productService.add(data).subscribe(
+      (res: any) => {
+        this.dialogRef.close();
+        this.onAddProduct.emit();
+        this.responseMsg = res.message;
+        this._snackbar.openSnackbar(this.responseMsg, 'Success');
+      },
+      (err: any) => {
+        this.dialogRef.close();
+        if (err.error?.message) {
+          this.responseMsg = err.error?.message;
+        } else {
+          this.responseMsg = globalProperties.genericError;
+        }
+        this._snackbar.openSnackbar(this.responseMsg, globalProperties.error);
+      }
+    );
   }
-  this._productService.update(data)
-  .subscribe((res: any) => {
-    this.dialogRef.close()
-    this.onEditProduct.emit()
-    this.responseMsg = res.message
-    this._snackbar.openSnackbar(this.responseMsg, 'Success')
-  }, (err: any) => {
-    this.dialogRef.close()
-    if(err.error?.message){
-      this.responseMsg = err.error?.message
-    }
-    else{
-      this.responseMsg = globalProperties.genericError
-    }
-   this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
-  })
-}
 
+  edit() {
+    var formData = this.productForm.value;
 
-
+    var data = {
+      id: this.dialogData.data.id,
+      name: formData.name,
+      categoryId: formData.categoryId,
+      description: formData.description,
+      price: formData.price,
+    };
+    this._productService.update(data).subscribe(
+      (res: any) => {
+        this.dialogRef.close();
+        this.onEditProduct.emit();
+        this.responseMsg = res.message;
+        this._snackbar.openSnackbar(this.responseMsg, 'Success');
+      },
+      (err: any) => {
+        this.dialogRef.close();
+        if (err.error?.message) {
+          this.responseMsg = err.error?.message;
+        } else {
+          this.responseMsg = globalProperties.genericError;
+        }
+        this._snackbar.openSnackbar(this.responseMsg, globalProperties.error);
+      }
+    );
+  }
 }

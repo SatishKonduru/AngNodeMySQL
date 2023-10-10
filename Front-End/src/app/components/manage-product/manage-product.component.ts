@@ -9,6 +9,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { globalProperties } from 'src/app/shared/globalProperties';
 import { ProductComponent } from '../product/product.component';
 import { DialogRef } from '@angular/cdk/dialog';
+import { ConfirmationComponent } from '../confirmation/confirmation.component';
 
 @Component({
   selector: 'app-manage-product',
@@ -83,11 +84,57 @@ editProduct(item: any){
 }
 
 deleteProduct(item: any){
+const dialogConfig = new MatDialogConfig()
+dialogConfig.data ={
+  message: 'Delete: '+item.name+ ' product'
+};
+const dialogRef = this._userDialog.open(ConfirmationComponent, dialogConfig)
+dialogRef.componentInstance.onEmitStatusChange.subscribe(res => {
+  this._ngxService.start()
+  this.delete(item.id)
+  dialogRef.close()
+})
+}
 
+delete(id: any){
+this._productService.delete(id)
+.subscribe((res: any) => {
+  this._ngxService.stop()
+  this.tableData()
+  this.responseMsg = res?.message
+  this._snackbar.openSnackbar(this.responseMsg, 'Success')
+},(err: any) => {
+  this._ngxService.stop()
+  if(err.error?.message){
+    this.responseMsg = err.error?.message
+  }
+  else{
+    this.responseMsg = globalProperties.genericError
+  }
+  this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
+})
 }
 
 onChange(status: any, id: any){
-
+ var data = {
+  status: status.toString(),
+  id: id
+ }
+ this._productService.updateStatus(data)
+ .subscribe((res:any) => {
+  this._ngxService.stop()
+  this.responseMsg = res?.message
+  this._snackbar.openSnackbar(this.responseMsg, 'Success')
+ }, (err: any) => {
+  this._ngxService.stop()
+  if(err.error?.message){
+    this.responseMsg = err.error?.message
+  }
+  else{
+    this.responseMsg = globalProperties.genericError
+  }
+  this._snackbar.openSnackbar(this.responseMsg, globalProperties.error)
+ })
 }
 onSearchClear(){
   this.searchKey = ''

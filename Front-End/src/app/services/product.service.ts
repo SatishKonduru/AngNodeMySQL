@@ -34,7 +34,7 @@ updateStatus(data : any){
 }
 
 delete(id: any){
-  return this._http.delete(this.url+'/product/delete'+id,{
+  return this._http.delete(this.url+'/product/delete/'+id,{
     headers: new HttpHeaders().set('Content-Type','application/json')})
 }
 
