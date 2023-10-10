@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode'
 import { MenuItems } from 'src/app/shared/menu-items';
 @Component({
@@ -12,7 +13,7 @@ export class SidenavComponent implements OnInit, AfterViewInit{
   // token: any = localStorage.getItem('token')
   token : any
   tokenPayload: any;
-  constructor(public menuItems: MenuItems){
+  constructor(public menuItems: MenuItems, private _router: Router){
     // console.log("menu items", menuItems.getMenuItems())
     // this.tokenPayload = jwt_decode(this.token)
     // if(localStorage.getItem('token') != null){
@@ -31,6 +32,7 @@ ngOnInit(): void {
       this.tokenPayload = jwt_decode(this.token)
       console.log("Role in Token Payload: ", this.tokenPayload)
     }
+   
   }
 
 ngAfterViewInit(): void {

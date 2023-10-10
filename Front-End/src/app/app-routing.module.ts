@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { FooterComponent } from './components/footer/footer.component';
 import { RouteGaurdService } from './services/route-gaurd.service';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
+import { ManageProductComponent } from './components/manage-product/manage-product.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,14 @@ const routes: Routes = [
       {
         path: 'category',
         component: ManageCategoryComponent,
+        canActivate: [RouteGaurdService],
+        data: {
+          expectedRole: ['admin']
+        }
+      },
+      {
+        path: 'product',
+        component: ManageProductComponent,
         canActivate: [RouteGaurdService],
         data: {
           expectedRole: ['admin']
