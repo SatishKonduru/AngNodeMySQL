@@ -1,0 +1,46 @@
+<mat-toolbar color="my-primary">
+    <mat-toolbar-row>
+        <span class="title-center">{{dialogData.action}} Category</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+    <form [formGroup]="productForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Name:</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="productForm.controls.name.touched && productForm.controls.name.invalid">
+                <span *ngIf="productForm.controls.name.errors?.required">This field is Mandatory</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <!-- <input matInput formControlName="category" required> -->
+            <mat-select formControlName="categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="productForm.controls.categoryId.touched && productForm.controls.categoryId.invalid">
+                <span *ngIf="productForm.controls.categoryId.errors?.required">This field is Mandatory</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description:</mat-label>
+            <input matInput formControlName="description" required>
+            <mat-error *ngIf="productForm.controls.description.touched && productForm.controls.description.invalid">
+                <span *ngIf="productForm.controls.description.errors?.required">This field is Mandatory</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Price:</mat-label>
+            <input matInput formControlName="price" required>
+            <mat-error *ngIf="productForm.controls.price.touched && productForm.controls.price.invalid">
+                <span *ngIf="productForm.controls.price.errors?.required">This field is Mandatory</span>
+            </mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions style="justify-content: center; margin-top: -30px;">
+    <button mat-raised-button color="my-primary"  [disabled]="!(productForm.valid && productForm.dirty)" (click)="handleSubmit()">{{action}}</button>
+    <button mat-raised-button color="dialog-close"  style="margin-left: 10px;" mat-dialog-close >Close</button>
+  </mat-dialog-actions> 

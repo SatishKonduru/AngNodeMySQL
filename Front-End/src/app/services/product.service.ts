@@ -23,8 +23,8 @@ update(data : any){
   })
 }
 
-getProudutcts(){
-  return this._http.get(this.url+'products/get')
+getProuducts(){
+  return this._http.get(this.url+'/product/get')
 }
 
 updateStatus(data : any){

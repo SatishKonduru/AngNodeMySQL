@@ -28,6 +28,7 @@ constructor(@Inject(MAT_DIALOG_DATA) public dialogData: any,
             public dialogRef: MatDialogRef<CategoryComponent>,
             private _snackbar: SnackbarService){}
 ngOnInit(): void {
+  console.log("Category Component dialogData: ", this.dialogData)
  this.categoryForm = this._formBuilder.group({
   name: [null, [Validators.required]]
  })

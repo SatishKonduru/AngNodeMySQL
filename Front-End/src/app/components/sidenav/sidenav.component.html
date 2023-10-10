@@ -6,7 +6,7 @@
           
           <mat-list-item  *ngFor="let item of menuItems.getMenuItems()" routerLinkActive="selected" group='{{item.state}}' class="listItem">
             <a [routerLink]="['/rsk/', item.state]"
-                *ngIf="(item.role === '' || item.role === tokenPayload.role)" style="color: #fff;">
+               style="color: #fff;">
               <mat-icon>{{item.icon}}</mat-icon>  
               {{" "+item.name}}
               <span fxFlex></span>
