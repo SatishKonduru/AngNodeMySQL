@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouteGaurdService } from './services/route-gaurd.service';
 import { ManageCategoryComponent } from './components/manage-category/manage-category.component';
 import { ManageProductComponent } from './components/manage-product/manage-product.component';
+import { ManageOrderComponent } from './components/manage-order/manage-order.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,14 @@ const routes: Routes = [
         canActivate: [RouteGaurdService],
         data: {
           expectedRole: ['admin']
+        }
+      },
+      {
+        path: 'order',
+        component: ManageOrderComponent,
+        canActivate: [RouteGaurdService],
+        data: {
+          expectedRole: ['user','admin']
         }
       }
       

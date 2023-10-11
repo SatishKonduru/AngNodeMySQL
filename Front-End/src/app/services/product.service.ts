@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -38,6 +39,16 @@ delete(id: any){
     headers: new HttpHeaders().set('Content-Type','application/json')})
 }
 
+getProductsByCategory(id: any){
+  return this._http.get(this.url+'/product/getByCategory/'+id, {
+    headers: new HttpHeaders().set('Content-Type','application/json')
+  })
+}
 
+getById(id: any){
+  return this._http.get(this.url+'/product/getById/'+id, {
+    headers: new HttpHeaders().set('Content-Type','application/json')
+  })
+}
 }
  

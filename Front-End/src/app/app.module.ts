@@ -30,6 +30,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { ManageProductComponent } from './components/manage-product/manage-product.component';
 import { ProductComponent } from './components/product/product.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { ManageOrderComponent } from './components/manage-order/manage-order.component';
 
 
 
@@ -65,7 +66,8 @@ const ngxUiLoaderConfing :  NgxUiLoaderConfig = {
     CategoryComponent,
     ManageProductComponent,
     ProductComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ManageOrderComponent
   ],
   imports: [
     BrowserModule,
