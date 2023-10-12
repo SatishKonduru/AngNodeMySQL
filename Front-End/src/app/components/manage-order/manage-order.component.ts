@@ -46,7 +46,7 @@ ngOnInit(){
     category: [null, [Validators.required]],
     quantity: [null, [Validators.required]],
     price: [null, [Validators.required]],
-    total: [0, [Validators.required]],
+    total: [0, [Validators.required]]
   })
 }
 
@@ -110,14 +110,15 @@ setQuantity(value: any){
   if( temp > 0){
     this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
  } 
- else if(temp != ''){
-  this.manageOrderForm.controls['quantity'].setValue('1')
+//  else if(temp != ''){
+  else{
+  this.manageOrderForm.controls['quantity'].setValue(1)
   this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
  }
 }
 
 validateProductAddButton(){
-  if(this.manageOrderForm.comtrols['total'].value === 0 || this.manageOrderForm.controls['total'].value === null || this.manageOrderForm.controls['quantity'].value <= 0){
+  if(this.manageOrderForm.controls['total'].value === 0 || this.manageOrderForm.controls['total'].value === null || this.manageOrderForm.controls['quantity'].value <= 0){
     return true
   }
   else{
@@ -127,7 +128,11 @@ validateProductAddButton(){
 
 
 validateSubmit(){
-  if(this.totalAmount === 0 || this.manageOrderForm.controls['name'].value === null || this.manageOrderForm.controls['email'].value === null || this.manageOrderForm.controls['contactNumber'].value === null || this.manageOrderForm.controls['paymentMethod'].value === null  ||
+  if(this.totalAmount === 0 || 
+    this.manageOrderForm.controls['name'].value === null ||
+    this.manageOrderForm.controls['email'].value === null || 
+    this.manageOrderForm.controls['contactNumber'].value === null ||
+    this.manageOrderForm.controls['paymentMethod'].value === null  ||
   !(this.manageOrderForm.controls['contactNumber'].valid) || 
   !(this.manageOrderForm.controls['email'].valid)){
     return true
