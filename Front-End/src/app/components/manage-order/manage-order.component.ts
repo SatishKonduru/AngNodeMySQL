@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChange, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { transformMenu } from '@angular/material/menu';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { saveAs } from 'file-saver';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BillService } from 'src/app/services/bill.service';
@@ -16,14 +18,15 @@ import { globalProperties } from 'src/app/shared/globalProperties';
 })
 export class ManageOrderComponent implements OnInit{
 displayedColumns : string[] = ['name', 'category', 'price', 'quantity', 'total', 'edit']
-dataSource: any = []
+dataSource: any = [] ;
 manageOrderForm : any = FormGroup
 categories: any = []
 products: any = []
 price: any
 totalAmount: number = 0
 responseMsg :  any
-
+length: any
+@ViewChild(MatPaginator) paginator: any = MatPaginator
 constructor(
   private _formBuilder: FormBuilder,
   private _categoryService: CategoryService,
@@ -156,6 +159,9 @@ add(){
       total: formData.total 
     })
     this.dataSource = [...this.dataSource]
+    this.length = this.dataSource.length
+    this.dataSource.paginator = this.paginator
+    
     this._snackbar.openSnackbar(globalProperties.productAdded,'Success')
   }
   else{
@@ -167,6 +173,7 @@ handleDeleteAction(value: any, element: any){
   this.totalAmount = this.totalAmount - element.total
   this.dataSource.splice(value, 1)
   this.dataSource = [...this.dataSource]
+ 
 }
 
 submitAction(){
@@ -209,5 +216,7 @@ downloadFile(fileName: any){
     this._ngxService.stop()
   })
 }
+
+
 
 }
