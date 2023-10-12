@@ -3,5 +3,5 @@
     color: #000 !important
 }
 th{
-    color: var(--orange)
+    color: var(--orange) !important
 }

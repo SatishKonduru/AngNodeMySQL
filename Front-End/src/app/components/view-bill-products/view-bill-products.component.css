@@ -1,0 +1,16 @@
+.title{
+    display: flex;
+    justify-content: center;
+    
+   
+}
+.orderDetails{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+}
+.mat-close{
+    color:#fff !important
+}
