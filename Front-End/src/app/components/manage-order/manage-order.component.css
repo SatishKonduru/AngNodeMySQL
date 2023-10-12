@@ -1,0 +1,4 @@
+.mat-my-primary{
+    background-image: linear-gradient(to right, var(--orange), #fff) !important;
+    color: #000 !important
+}

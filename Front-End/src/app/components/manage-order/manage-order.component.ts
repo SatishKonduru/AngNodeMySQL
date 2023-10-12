@@ -88,10 +88,10 @@ getProductsByCategory(item: any){
 
 getProductDetails(item: any){
   this._productService.getById(item.id)
-  .subscribe((res: any) => {
+  .subscribe((res: any) => { 
     this.price = res.price
     this.manageOrderForm.controls['price'].setValue(this.price)
-    this.manageOrderForm.controls['quantity'].setValue('1')
+    this.manageOrderForm.controls['quantity'].setValue(1)
     this.manageOrderForm.controls['total'].setValue(this.price * 1)
   },(err:any) => {
     this._ngxService.stop()
@@ -110,8 +110,8 @@ setQuantity(value: any){
   if( temp > 0){
     this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
  } 
-//  else if(temp != ''){
-  else{
+ else if(temp != ''){
+  // else{
   this.manageOrderForm.controls['quantity'].setValue(1)
   this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
  }
