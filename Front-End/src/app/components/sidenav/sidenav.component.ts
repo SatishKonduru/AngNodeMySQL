@@ -13,6 +13,7 @@ export class SidenavComponent implements OnInit, AfterViewInit{
   // token: any = localStorage.getItem('token')
   token : any
   tokenPayload: any;
+  role : any[] =[]
   constructor(public menuItems: MenuItems, private _router: Router){
     // console.log("menu items", menuItems.getMenuItems())
     // this.tokenPayload = jwt_decode(this.token)
@@ -21,16 +22,19 @@ export class SidenavComponent implements OnInit, AfterViewInit{
     //   this.tokenPayload = jwt_decode(this.token)
     //   console.log("Role in Token Payload: ", this.tokenPayload.role)
     // }
+   
   }
 
 ngOnInit(): void {
   this.getToken()
 }
+
+
   getToken(){
     if(localStorage.getItem('token') != null){
       this.token = localStorage.getItem('token')
       this.tokenPayload = jwt_decode(this.token)
-      console.log("Role in Token Payload: ", this.tokenPayload)
+      console.log("Role in Token Payload: ", this.tokenPayload.role)
     }
    
   }
