@@ -1,7 +1,7 @@
 .rsk-container {
     top: 8.7rem;
     width: 100%;
-    height: 52.4rem;
+    height: calc(100vh - 0px);
     background: #fff;
     
   }
