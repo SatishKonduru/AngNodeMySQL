@@ -16,6 +16,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSortModule} from '@angular/material/sort';
 
 
 
@@ -35,7 +36,8 @@ const materialComponents = [
   MatTooltipModule,
   MatPaginatorModule,
   MatSlideToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSortModule
 ]
 @NgModule({
   imports: [materialComponents],

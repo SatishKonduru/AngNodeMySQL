@@ -9,6 +9,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { globalProperties } from 'src/app/shared/globalProperties';
 import { CategoryComponent } from '../category/category.component';
 import { DialogRef } from '@angular/cdk/dialog';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-manage-category',
@@ -21,6 +22,7 @@ export class ManageCategoryComponent implements OnInit{
   responseMsg : any;
   searchKey: string = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort : MatSort;
   constructor(
     private _categoryService: CategoryService,
     private _ngxService: NgxUiLoaderService,
@@ -39,6 +41,7 @@ tableData() {
     this._ngxService.stop()
     this.dataSource = new  MatTableDataSource(res)
     this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort
   }, (err : any) => {
     this._ngxService.stop()
     if(err.error?.message){
