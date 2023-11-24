@@ -10,6 +10,7 @@ import { ManageProductComponent } from './components/manage-product/manage-produ
 import { ManageOrderComponent } from './components/manage-order/manage-order.component';
 import { ViewBillComponent } from './components/view-bill/view-bill.component';
 import { ManageUserComponent } from './components/manage-user/manage-user.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'rsk',
-    component: HomeComponent,
+    component: DashboardComponent,
     children: [
       {
         path: '',
